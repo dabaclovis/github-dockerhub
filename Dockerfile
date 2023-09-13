@@ -1,4 +1,10 @@
-FROM nginx:1
-RUN apt-get update 
+FROM nginx 
+RUN apt-get update -y 
+RUN apt-get install -y \
+    git \
+    tree \
+    vim \
+    atop 
 WORKDIR /app 
-COPY ./folder/ /usr/share/nginx/html
+COPY . /app
+RUN cp -r ./folder/. /usr/share/nginx/html/
